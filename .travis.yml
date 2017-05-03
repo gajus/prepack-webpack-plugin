@@ -6,7 +6,6 @@ node_js:
 before_install:
   - npm config set depth 0
 script:
-  - npm install webpack
   - npm run lint
   - npm run test
   - npm run build
