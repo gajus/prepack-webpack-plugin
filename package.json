@@ -29,6 +29,7 @@
     "eslint": "^3.19.0",
     "eslint-config-canonical": "^8.1.1",
     "flow-bin": "^0.44.0",
+    "flow-copy-source": "^1.1.0",
     "husky": "^0.13.3",
     "nyc": "^10.2.0",
     "semantic-release": "^6.3.6"
@@ -65,7 +66,7 @@
     "url": "https://github.com/gajus/prepack-loader"
   },
   "scripts": {
-    "build": "rm -fr ./dist && NODE_ENV=production babel ./src --out-dir ./dist --copy-files --source-maps",
+    "build": "rm -fr ./dist && NODE_ENV=production babel ./src --out-dir ./dist --copy-files --source-maps && flow-copy-source src dist",
     "lint": "eslint ./src ./test && flow",
     "test": "NODE_ENV=test nyc --reporter=text ava --verbose --serial"
   },
