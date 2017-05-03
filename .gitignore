@@ -1,0 +1,12 @@
+coverage
+dist
+node_modules
+*.log
+.*
+!.babelrc
+!.eslintrc
+!.flowconfig
+!.gitignore
+!.npmignore
+!.scripts
+!.travis.yml

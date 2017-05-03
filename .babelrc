@@ -1,0 +1,15 @@
+{
+  "env": {
+    "test": {
+      "plugins": [
+        "istanbul"
+      ],
+      "sourceMaps": "inline"
+    }
+  },
+  "plugins": [
+    "transform-es2015-modules-commonjs",
+    "transform-object-rest-spread",
+    "transform-flow-strip-types"
+  ]
+}

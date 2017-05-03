@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "canonical",
+    "canonical/flowtype"
+  ],
+  "root": true,
+  "rules": {
+    "flowtype/no-weak-types": 0
+  }
+}
