@@ -18,7 +18,7 @@ const defaultConfiguration = {
 export default class PrepackPlugin {
   configuration: PluginConfigurationType;
 
-  constructor (userConfiguration: UserPluginConfigurationType) {
+  constructor (userConfiguration?: UserPluginConfigurationType) {
     this.configuration = {
       ...defaultConfiguration,
       ...userConfiguration
