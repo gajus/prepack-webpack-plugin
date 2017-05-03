@@ -4,7 +4,9 @@ import ModuleFilenameHelpers from 'webpack/lib/ModuleFilenameHelpers';
 import {
   RawSource
 } from 'webpack-sources';
-import prepackCode from './prepackCode';
+import {
+  prepack
+} from 'prepack';
 import type {
   PluginConfigurationType,
   UserPluginConfigurationType
@@ -47,7 +49,10 @@ export default class PrepackPlugin {
 
             const code = asset.source();
 
-            const prepackedCode = prepackCode(file, code, configuration.prepack);
+            const prepackedCode = prepack(code, {
+              ...configuration.prepack,
+              filename: file
+            });
 
             compilation.assets[file] = new RawSource(prepackedCode.code);
           }
