@@ -1,53 +1,24 @@
 // @flow
 
-import constructRealm from 'prepack/lib/construct_realm';
-import Serializer from 'prepack/lib/serializer';
-import initializeGlobals from 'prepack/lib/globals';
-import {
-  getRealmOptions,
-  getSerializerOptions
-} from 'prepack/lib/options';
 import ModuleFilenameHelpers from 'webpack/lib/ModuleFilenameHelpers';
 import {
   RawSource
 } from 'webpack-sources';
+import prepackCode from './prepackCode';
+import type {
+  PluginConfigurationType,
+  UserPluginConfigurationType
+} from './types';
 
 const defaultConfiguration = {
   prepack: {},
   test: /\.js($|\?)/i
 };
 
-type ConfigurationType = {
-  prepack: Object,
-  test: RegExp
-};
-
-const prepackCode = (filename: string, code: string, prepackConfiguration = {}) => {
-  const realm = constructRealm(getRealmOptions(prepackConfiguration));
-
-  initializeGlobals(realm);
-
-  const serializer = new Serializer(
-    realm,
-    getSerializerOptions(prepackConfiguration)
-  );
-
-  // @todo Add source map support.
-  const sourceMap = '';
-
-  const serialized = serializer.init(filename, code, sourceMap, prepackConfiguration.sourceMaps);
-
-  if (!serialized) {
-    throw new Error('Unexpected state.');
-  }
-
-  return serialized;
-};
-
 export default class PrepackPlugin {
-  configuration: ConfigurationType;
+  configuration: PluginConfigurationType;
 
-  constructor (userConfiguration: ConfigurationType) {
+  constructor (userConfiguration: UserPluginConfigurationType) {
     this.configuration = {
       ...defaultConfiguration,
       ...userConfiguration
