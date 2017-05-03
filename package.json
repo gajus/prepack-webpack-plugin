@@ -68,5 +68,5 @@
     "lint": "eslint ./src ./test && flow",
     "test": "NODE_ENV=test nyc --reporter=text ava --verbose --serial"
   },
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
