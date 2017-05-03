@@ -34,3 +34,19 @@ module.exports = {
 };
 
 ```
+
+> If you are using commonjs, you must explicitly reference the `.default` property of the module, e.g.
+>
+> ```js
+> const PrepackWebpackPlugin = require('prepack-webpack-plugin').default;
+> 
+> const configuration = {};
+> 
+> module.exports = {
+>   // ...
+>   plugins: [
+>     new PrepackWebpackPlugin(configuration)
+>   ]
+> };
+>
+> ```
