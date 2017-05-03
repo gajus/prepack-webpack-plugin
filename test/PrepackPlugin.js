@@ -1,6 +1,13 @@
 // @flow
 
 import test from 'ava';
+import PrepackPlugin from '../src/PrepackPlugin';
 
-// $FlowFixMe
-test.todo('write tests');
+test('initializes default configuration', (t) => {
+  const prepackPlugin = new PrepackPlugin();
+
+  t.deepEqual(prepackPlugin, {
+    prepack: {},
+    test: /\.js($|\?)/i
+  });
+});
