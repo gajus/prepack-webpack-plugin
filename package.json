@@ -42,7 +42,7 @@
     "plugin"
   ],
   "license": "BSD-3-Clause",
-  "main": "./dist/index.js",
+  "main": "./dist/PrepackPlugin.js",
   "name": "prepack-webpack-plugin",
   "nyc": {
     "include": [
