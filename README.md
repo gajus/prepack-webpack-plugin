@@ -17,7 +17,7 @@ A webpack plugin for [prepack](https://prepack.io/).
 |Name|Description|Default|
 |---|---|---|
 |`test`|A regex used to match the files.|`/\.js($|\?)/i`|
-|`prepack`|Prepack configuration. See [issue #1](https://github.com/gajus/prepack-webpack-plugin/issues/1).|
+|`prepack`|Prepack configuration. See [Prepack documentation](https://prepack.io/getting-started.html#options).|
 
 ## Example
 
