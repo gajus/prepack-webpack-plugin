@@ -5,6 +5,7 @@
   ],
   "root": true,
   "rules": {
-    "flowtype/no-weak-types": 0
+    "flowtype/no-weak-types": 0,
+    "no-restricted-syntax": 0
   }
 }

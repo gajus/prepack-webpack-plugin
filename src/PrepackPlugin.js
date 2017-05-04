@@ -17,10 +17,11 @@ const defaultConfiguration = {
   test: /\.js($|\?)/i
 };
 
-const nonEntryChunkPreamble = `__assumeDataProperty(global, "webpackJsonp", __abstract("function"))`;
+const nonEntryChunkPreamble = '__assumeDataProperty(global, "webpackJsonp", __abstract("function"))';
 
-const isEntryChunk = (chunk: Object) => chunk.hasRuntime() && chunk.isInitial(); 
-
+const isEntryChunk = (chunk: Object) => {
+  return chunk.hasRuntime() && chunk.isInitial();
+};
 
 export default class PrepackPlugin {
   configuration: PluginConfigurationType;
@@ -39,7 +40,7 @@ export default class PrepackPlugin {
       compilation.plugin('optimize-chunk-assets', (chunks, callback) => {
         for (const chunk of chunks) {
           const files = chunk.files;
-          
+
           for (const file of files) {
             const matchObjectConfiguration = {
               test: configuration.test
