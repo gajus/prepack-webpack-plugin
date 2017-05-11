@@ -12,6 +12,8 @@ A webpack plugin for [prepack](https://prepack.io/).
 1. Install `prepack-webpack-plugin`.
 1. Add an instance of the plugin to the webpack [plugin configuration](https://webpack.js.org/configuration/plugins/).
 
+> Note that this plugin only works with **webpack 2.x**
+
 ### Configuration
 
 |Name|Description|Default|
