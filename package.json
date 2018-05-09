@@ -28,7 +28,7 @@
     "coveralls": "^2.13.0",
     "eslint": "^3.19.0",
     "eslint-config-canonical": "^8.1.1",
-    "flow-bin": "^0.44.0",
+    "flow-bin": "^0.71.0",
     "flow-copy-source": "^1.1.0",
     "husky": "^0.13.3",
     "nyc": "^10.2.0",
