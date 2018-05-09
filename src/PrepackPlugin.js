@@ -41,7 +41,9 @@ export default class PrepackPlugin {
         for (const chunk of chunks) {
           const files = chunk.files;
 
-          const sources = files.map(file => {
+          const sources = [];
+
+          for (const file of files) {
             const matchObjectConfiguration = {
               test: configuration.test
             };
@@ -54,21 +56,22 @@ export default class PrepackPlugin {
             const asset = compilation.assets[file];
 
             const code = isEntryChunk(chunk) ? asset.source() : `${nonEntryChunkPreamble}\n ${asset.source()}`;
-            
-            return {
-              filePath: file,
-              fileContents: code
-            }
-          })
-          
-          const prepackedCode = prepackSources(sources, {
+
+            sources.push({
+              fileContents: code,
+              filePath: file
+            });
+          }
+
+          const prepackedCodes = prepackSources(sources, {
             ...configuration.prepack
           });
-          
-          prepackedCode.forEach(({ code }, index) => {
+
+          for (const index of prepackedCodes) {
             const file = sources[index].filePath;
-            compilation.assets[file] = new RawSource(code);
-          })
+
+            compilation.assets[file] = new RawSource(prepackedCodes[index].code);
+          }
         }
 
         callback();
