@@ -5,7 +5,7 @@ import {
   RawSource
 } from 'webpack-sources';
 import {
-  prepack
+  prepackSources
 } from 'prepack';
 import type {
   PluginConfigurationType,
@@ -41,6 +41,8 @@ export default class PrepackPlugin {
         for (const chunk of chunks) {
           const files = chunk.files;
 
+          const sources = [];
+
           for (const file of files) {
             const matchObjectConfiguration = {
               test: configuration.test
@@ -55,12 +57,20 @@ export default class PrepackPlugin {
 
             const code = isEntryChunk(chunk) ? asset.source() : `${nonEntryChunkPreamble}\n ${asset.source()}`;
 
-            const prepackedCode = prepack(code, {
-              ...configuration.prepack,
-              filename: file
+            sources.push({
+              fileContents: code,
+              filePath: file
             });
+          }
 
-            compilation.assets[file] = new RawSource(prepackedCode.code);
+          const prepackedCodes = prepackSources(sources, {
+            ...configuration.prepack
+          });
+
+          for (const index of prepackedCodes) {
+            const file = sources[index].filePath;
+
+            compilation.assets[file] = new RawSource(prepackedCodes[index].code);
           }
         }
 
