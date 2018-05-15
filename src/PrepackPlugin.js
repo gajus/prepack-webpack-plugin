@@ -8,73 +8,51 @@ import {
   prepackSources
 } from 'prepack';
 import type {
-  PluginConfigurationType,
-  UserPluginConfigurationType
+  PluginConfigType,
+  UserPluginConfigType
 } from './types';
 
-const defaultConfiguration = {
+const defaultConfig = {
   prepack: {},
   test: /\.js($|\?)/i
 };
 
-const nonEntryChunkPreamble = '__assumeDataProperty(global, "webpackJsonp", __abstract("function"))';
-
-const isEntryChunk = (chunk: Object) => {
-  return chunk.hasRuntime() && chunk.isInitial();
-};
-
 export default class PrepackPlugin {
-  configuration: PluginConfigurationType;
+  config: PluginConfigType;
 
-  constructor (userConfiguration?: UserPluginConfigurationType) {
-    this.configuration = {
-      ...defaultConfiguration,
-      ...userConfiguration
+  constructor (userConfig?: UserPluginConfigType) {
+    this.config = {
+      ...defaultConfig,
+      ...userConfig
     };
   }
 
   apply (compiler: Object) {
-    const configuration = this.configuration;
-
-    compiler.plugin('compilation', (compilation) => {
-      compilation.plugin('optimize-chunk-assets', (chunks, callback) => {
-        for (const chunk of chunks) {
-          const files = chunk.files;
-
-          const sources = [];
-
-          for (const file of files) {
-            const matchObjectConfiguration = {
-              test: configuration.test
-            };
-
-            if (!ModuleFilenameHelpers.matchObject(matchObjectConfiguration, file)) {
-              // eslint-disable-next-line no-continue
-              continue;
+    compiler.hooks.compilation.tap('PrepackPlugin', (compilation) => {
+      compilation.hooks.optimizeChunkAssets.tap('PrepackPlugin', (chunks) => {
+        chunks.forEach((chunk: Object) => {
+          // prepack every file in chunk
+          chunk.files.forEach((filePath) => {
+            // check if file extension matches to config.test
+            if (
+              ModuleFilenameHelpers.matchObject({
+                test: this.config.test
+              }, filePath)
+            ) {
+              // prepack and apply changes
+              compilation.assets[filePath] = new RawSource(
+                prepackSources([
+                  {
+                    fileContents: compilation.assets[filePath].source(),
+                    filePath
+                  }
+                ], {
+                  ...this.config.prepack
+                }).code
+              );
             }
-
-            const asset = compilation.assets[file];
-
-            const code = isEntryChunk(chunk) ? asset.source() : `${nonEntryChunkPreamble}\n ${asset.source()}`;
-
-            sources.push({
-              fileContents: code,
-              filePath: file
-            });
-          }
-
-          const prepackedCodes = prepackSources(sources, {
-            ...configuration.prepack
           });
-
-          for (const index of prepackedCodes) {
-            const file = sources[index].filePath;
-
-            compilation.assets[file] = new RawSource(prepackedCodes[index].code);
-          }
-        }
-
-        callback();
+        });
       });
     });
   }

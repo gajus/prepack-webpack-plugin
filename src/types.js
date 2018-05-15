@@ -1,13 +1,13 @@
 // @flow
 
-export type PrepackConfigurationType = Object;
+export type PrepackConfigType = Object;
 
-export type PluginConfigurationType = {
-  prepack: PrepackConfigurationType,
+export type PluginConfigType = {
+  prepack: PrepackConfigType,
   test: RegExp
 };
 
-export type UserPluginConfigurationType = {
-  prepack?: PrepackConfigurationType,
+export type UserPluginConfigType = {
+  prepack?: PrepackConfigType,
   test?: RegExp
 };
