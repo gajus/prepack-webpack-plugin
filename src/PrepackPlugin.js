@@ -28,7 +28,7 @@ export default class PrepackPlugin {
   }
 
   apply (compiler: Object) {
-    const { config } = this;
+    const {config} = this;
 
     compiler.hooks.compilation.tap('PrepackPlugin', (compilation) => {
       compilation.hooks.optimizeChunkAssets.tap('PrepackPlugin', (chunks) => {
