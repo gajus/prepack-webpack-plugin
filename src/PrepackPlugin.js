@@ -28,6 +28,8 @@ export default class PrepackPlugin {
   }
 
   apply (compiler: Object) {
+    const { config } = this;
+
     compiler.hooks.compilation.tap('PrepackPlugin', (compilation) => {
       compilation.hooks.optimizeChunkAssets.tap('PrepackPlugin', (chunks) => {
         chunks.forEach((chunk: Object) => {
@@ -36,7 +38,7 @@ export default class PrepackPlugin {
             // check if file extension matches to config.test
             if (
               ModuleFilenameHelpers.matchObject({
-                test: this.config.test
+                test: config.test
               }, filePath)
             ) {
               // prepack and apply changes
@@ -47,7 +49,7 @@ export default class PrepackPlugin {
                     filePath
                   }
                 ], {
-                  ...this.config.prepack
+                  ...config.prepack
                 }).code
               );
             }
