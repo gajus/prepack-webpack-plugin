@@ -1,0 +1,26 @@
+{
+  "name": "prepack-webpack-plugin-test",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "author": {
+    "email": "gajus@gajus.com",
+    "name": "Gajus Kuizinas",
+    "url": "http://gajus.com"
+  },
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.47",
+    "@babel/preset-env": "^7.0.0-beta.47",
+    "babel-loader": "^8.0.0-beta.2",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3"
+  },
+  "scripts": {
+    "start": "webpack --mode development -w",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "ramda": "^0.25.0"
+  }
+}
