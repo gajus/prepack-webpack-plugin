@@ -2,6 +2,7 @@
   "name": "prepack-webpack-plugin",
   "description": "A webpack plugin for prepack.",
   "version": "2.0.0",
+  "keywords": ["webpack", "prepack", "plugin"],
   "main": "./dist/PrepackPlugin.js",
   "license": "BSD-3-Clause",
   "author": {
@@ -9,7 +10,10 @@
     "name": "Gajus Kuizinas",
     "url": "http://gajus.com"
   },
-  "keywords": ["webpack", "prepack", "plugin"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gajus/prepack-webpack-plugin"
+  },
   "scripts": {
     "build": "rm -fr ./dist && NODE_ENV=production babel ./src --out-dir ./dist --copy-files --source-maps && flow-copy-source src dist",
     "lint": "eslint ./src ./test && flow",
@@ -41,10 +45,6 @@
   },
   "peerDependencies": {
     "webpack": ">3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gajus/prepack-webpack-plugin"
   },
   "engines": {
     "node": ">6.0.0"
