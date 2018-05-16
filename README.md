@@ -12,7 +12,7 @@ A webpack plugin for [prepack](https://prepack.io/).
 1. Install `prepack-webpack-plugin`.
 1. Add an instance of the plugin to the webpack [plugin configuration](https://webpack.js.org/configuration/plugins/).
 
-> Note that this plugin only works with **webpack 2.x** and **webpack 3.x**
+> Note that this plugin only works with **webpack 4.x**
 
 ### Configuration
 
@@ -41,9 +41,9 @@ module.exports = {
 >
 > ```js
 > const PrepackWebpackPlugin = require('prepack-webpack-plugin').default;
-> 
+>
 > const configuration = {};
-> 
+>
 > module.exports = {
 >   // ...
 >   plugins: [

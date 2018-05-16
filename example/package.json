@@ -10,8 +10,5 @@
   "scripts": {
     "start": "webpack --mode development --watch",
     "build": "webpack --mode production"
-  },
-  "dependencies": {
-    "ramda": "^0.25.0"
   }
 }

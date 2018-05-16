@@ -1,20 +1,24 @@
 {
+  "name": "prepack-webpack-plugin",
+  "description": "A webpack plugin for prepack.",
+  "version": "2.0.0",
+  "main": "./dist/PrepackPlugin.js",
+  "license": "BSD-3-Clause",
   "author": {
     "email": "gajus@gajus.com",
     "name": "Gajus Kuizinas",
     "url": "http://gajus.com"
   },
-  "ava": {
-    "babel": {
-      "babelrc": true
-    },
-    "require": "babel-loader"
+  "keywords": ["webpack", "prepack", "plugin"],
+  "scripts": {
+    "build": "rm -fr ./dist && NODE_ENV=production babel ./src --out-dir ./dist --copy-files --source-maps && flow-copy-source src dist",
+    "lint": "eslint ./src ./test && flow",
+    "test": "NODE_ENV=test nyc --reporter=text ava --verbose --serial"
   },
   "dependencies": {
     "prepack": "^0.2.0",
     "webpack-sources": "^0.2.3"
   },
-  "description": "A webpack plugin for prepack.",
   "devDependencies": {
     "ava": "^0.19.1",
     "babel-cli": "^6.24.1",
@@ -36,40 +40,26 @@
     "webpack": "^2.4.1"
   },
   "peerDependencies": {
-    "webpack": ">2"
-  },
-  "engines": {
-    "node": ">6.0.0"
-  },
-  "keywords": [
-    "webpack",
-    "prepack",
-    "plugin"
-  ],
-  "license": "BSD-3-Clause",
-  "main": "./dist/PrepackPlugin.js",
-  "name": "prepack-webpack-plugin",
-  "nyc": {
-    "include": [
-      "src/**/*.js"
-    ],
-    "instrument": false,
-    "reporter": [
-      "text-lcov"
-    ],
-    "require": [
-      "babel-register"
-    ],
-    "sourceMap": false
+    "webpack": ">3"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/gajus/prepack-webpack-plugin"
   },
-  "scripts": {
-    "build": "rm -fr ./dist && NODE_ENV=production babel ./src --out-dir ./dist --copy-files --source-maps && flow-copy-source src dist",
-    "lint": "eslint ./src ./test && flow",
-    "test": "NODE_ENV=test nyc --reporter=text ava --verbose --serial"
+  "engines": {
+    "node": ">6.0.0"
   },
-  "version": "1.0.1"
+  "ava": {
+    "babel": {
+      "babelrc": true
+    },
+    "require": "babel-loader"
+  },
+  "nyc": {
+    "include": ["src/**/*.js"],
+    "instrument": false,
+    "reporter": ["text-lcov"],
+    "require": ["babel-register"],
+    "sourceMap": false
+  }
 }
