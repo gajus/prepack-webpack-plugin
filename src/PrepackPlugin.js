@@ -8,37 +8,37 @@ import {
   prepackSources
 } from 'prepack';
 import type {
-  PluginConfigType,
-  UserPluginConfigType
+  PluginConfigurationType,
+  UserPluginConfigurationType
 } from './types';
 
-const defaultConfig = {
+const defaultConfiguration = {
   prepack: {},
   test: /\.js($|\?)/i
 };
 
 export default class PrepackPlugin {
-  config: PluginConfigType;
+  configuration: PluginConfigurationType;
 
-  constructor (userConfig?: UserPluginConfigType) {
-    this.config = {
-      ...defaultConfig,
-      ...userConfig
+  constructor (userConfiguration?: UserPluginConfigurationType) {
+    this.configuration = {
+      ...defaultConfiguration,
+      ...userConfiguration
     };
   }
 
   apply (compiler: Object) {
-    const {config} = this;
+    const {configuration} = this;
 
     compiler.hooks.compilation.tap('PrepackPlugin', (compilation) => {
       compilation.hooks.optimizeChunkAssets.tap('PrepackPlugin', (chunks) => {
         chunks.forEach((chunk: Object) => {
           // prepack every file in chunk
           chunk.files.forEach((filePath) => {
-            // check if file extension matches to config.test
+            // check if file extension matches to configuration.test
             if (
               ModuleFilenameHelpers.matchObject({
-                test: config.test
+                test: configuration.test
               }, filePath)
             ) {
               // prepack and apply changes
@@ -49,7 +49,7 @@ export default class PrepackPlugin {
                     filePath
                   }
                 ], {
-                  ...config.prepack
+                  ...configuration.prepack
                 }).code
               );
             }
