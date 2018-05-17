@@ -60,7 +60,7 @@
     "sourceMap": false
   },
   "peerDependencies": {
-    "webpack": ">3"
+    "webpack": "^3 || ^4"
   },
   "repository": {
     "type": "git",
