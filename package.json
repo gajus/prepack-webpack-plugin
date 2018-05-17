@@ -11,7 +11,7 @@
     "require": "babel-loader"
   },
   "dependencies": {
-    "prepack": "^0.2.0",
+    "prepack": "^0.2.34",
     "webpack-sources": "^0.2.3"
   },
   "description": "A webpack plugin for prepack.",
@@ -35,16 +35,13 @@
     "semantic-release": "^15.4.0",
     "webpack": "^2.4.1"
   },
-  "peerDependencies": {
-    "webpack": ">2"
-  },
   "engines": {
     "node": ">6.0.0"
   },
   "keywords": [
-    "webpack",
+    "plugin",
     "prepack",
-    "plugin"
+    "webpack"
   ],
   "license": "BSD-3-Clause",
   "main": "./dist/PrepackPlugin.js",
@@ -62,6 +59,9 @@
     ],
     "sourceMap": false
   },
+  "peerDependencies": {
+    "webpack": "^3 || ^4"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/gajus/prepack-webpack-plugin"
@@ -71,5 +71,5 @@
     "lint": "eslint ./src ./test && flow",
     "test": "NODE_ENV=test nyc --reporter=text ava --verbose --serial"
   },
-  "version": "1.0.1"
+  "version": "2.0.0"
 }
