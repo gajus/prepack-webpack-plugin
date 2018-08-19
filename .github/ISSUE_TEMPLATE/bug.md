@@ -1,7 +1,4 @@
-## Expected Behavior
-
-
-## Actual Behavior
+## The Problem
 
 
 ## Steps to Reproduce the Problem
@@ -9,9 +6,11 @@
   1.
   1.
   1.
+  
+## Webpack Configuration
 
 ## Specifications
 
-  - Version:
+  - Node.js version:
+  - Webpack version:
   - Platform:
-  - Subsystem:
