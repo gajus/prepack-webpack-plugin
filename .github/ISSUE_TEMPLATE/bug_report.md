@@ -14,3 +14,4 @@
   - Node.js version:
   - Webpack version:
   - Platform:
+  - Prepack version (optional): 
