@@ -11,7 +11,6 @@
     "require": "babel-loader"
   },
   "dependencies": {
-    "react-native-iphone-x-helper": "^1.0.3",
     "webpack-sources": "^0.2.3"
   },
   "description": "A webpack plugin for prepack.",
