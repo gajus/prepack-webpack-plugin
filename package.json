@@ -59,7 +59,7 @@
     "sourceMap": false
   },
   "peerDependencies": {
-    "prepack": "^0.2.48",
+    "prepack": "^0.2",
     "webpack": "^4"
   },
   "repository": {
