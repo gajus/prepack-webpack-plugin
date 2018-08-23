@@ -11,7 +11,6 @@
     "require": "babel-loader"
   },
   "dependencies": {
-    "prepack": "^0.2.34",
     "react-native-iphone-x-helper": "^1.0.3",
     "webpack-sources": "^0.2.3"
   },
@@ -61,7 +60,8 @@
     "sourceMap": false
   },
   "peerDependencies": {
-    "webpack": "^3 || ^4"
+    "prepack": "^0.2.48",
+    "webpack": "^4"
   },
   "repository": {
     "type": "git",
