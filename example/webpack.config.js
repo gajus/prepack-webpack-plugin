@@ -4,8 +4,11 @@ const PrepackPlugin = require('../').default;
 
 module.exports = {
   entry: {
-    index: path.resolve(__dirname, 'src/index.js'),
-    chunk: path.resolve(__dirname, 'src/chunk.js')
+    'hello-world': path.resolve(__dirname, 'src/hello-world.js'),
+    'abstraction': path.resolve(__dirname, 'src/abstraction.js'),
+    'fibonacci': path.resolve(__dirname, 'src/fibonacci.js'),
+    'modules': path.resolve(__dirname, 'src/modules.js'),
+    'branching': path.resolve(__dirname, 'src/branching.js'),
   },
   output: {
     filename: '[name].bundle.js',

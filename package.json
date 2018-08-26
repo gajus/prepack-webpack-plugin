@@ -11,7 +11,6 @@
     "require": "babel-loader"
   },
   "dependencies": {
-    "prepack": "^0.2.34",
     "webpack-sources": "^0.2.3"
   },
   "description": "A webpack plugin for prepack.",
@@ -60,7 +59,8 @@
     "sourceMap": false
   },
   "peerDependencies": {
-    "webpack": "^3 || ^4"
+    "prepack": "^0.2",
+    "webpack": "^4"
   },
   "repository": {
     "type": "git",
