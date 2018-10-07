@@ -5,34 +5,35 @@
     "url": "http://gajus.com"
   },
   "ava": {
-    "babel": {
-      "babelrc": true
-    },
-    "require": "babel-loader"
+    "require": [
+      "@babel/register"
+    ]
   },
   "dependencies": {
-    "webpack-sources": "^0.2.3"
+    "webpack-sources": "^1.3.0"
   },
   "description": "A webpack plugin for prepack.",
   "devDependencies": {
-    "ava": "^0.19.1",
-    "babel-cli": "^6.24.1",
-    "babel-loader": "^7.0.0",
-    "babel-plugin-istanbul": "^4.1.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-env": "^1.4.0",
-    "babel-register": "^6.24.1",
-    "coveralls": "^2.13.0",
-    "eslint": "^3.19.0",
-    "eslint-config-canonical": "^8.1.1",
-    "flow-bin": "^0.71.0",
-    "flow-copy-source": "^1.1.0",
-    "husky": "^0.13.3",
-    "nyc": "^10.2.0",
-    "semantic-release": "^15.4.0",
-    "webpack": "^2.4.1"
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-flow-strip-types": "^7.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "ava": "^1.0.0-beta.8",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-istanbul": "^5.1.0",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.6.1",
+    "eslint-config-canonical": "^13.0.0",
+    "flow-bin": "^0.82.0",
+    "flow-copy-source": "^2.0.2",
+    "husky": "^1.1.1",
+    "nyc": "^13.1.0",
+    "semantic-release": "^15.9.17",
+    "webpack": "^4.20.2"
   },
   "engines": {
     "node": ">6.0.0"
@@ -46,15 +47,13 @@
   "main": "./dist/PrepackPlugin.js",
   "name": "prepack-webpack-plugin",
   "nyc": {
+    "all": true,
     "include": [
       "src/**/*.js"
     ],
     "instrument": false,
-    "reporter": [
-      "text-lcov"
-    ],
     "require": [
-      "babel-register"
+      "@babel/register"
     ],
     "sourceMap": false
   },

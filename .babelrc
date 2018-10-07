@@ -8,8 +8,8 @@
     }
   },
   "plugins": [
-    "transform-es2015-modules-commonjs",
-    "transform-object-rest-spread",
-    "transform-flow-strip-types"
+    "@babel/plugin-transform-modules-commonjs",
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-transform-flow-strip-types"
   ]
 }
