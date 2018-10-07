@@ -10,7 +10,9 @@ cache:
     - node_modules
 before_install:
   - npm config set depth 0
+install:
   - npm install prepack
+  - npm install
 script:
   - npm run lint
   - npm run test
